@@ -1,0 +1,58 @@
+{
+    "name": "gacela-project/gacela-env-config-reader",
+    "description": "Load .env files into Gacela",
+    "type": "library",
+    "keywords": ["php","modular","kernel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jose Maria Valera Reales",
+            "email": "chemaclass@outlook.es"
+        },
+        {
+            "name": "Jesus Valera Reales",
+            "email": "jesus1902@outlook.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "gacela-project/gacela": "0.11.0",
+        "symfony/dotenv": "^6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "vimeo/psalm": "^4.19",
+        "friendsofphp/php-cs-fixer": "^3.5",
+        "symfony/var-dumper": "^5.4",
+        "phpstan/phpstan": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gacela\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GacelaTest\\": "tests"
+        }
+    },
+    "scripts": {
+        "test-all": [
+            "@test-quality",
+            "@test-unit",
+            "@test-integration"
+        ],
+        "test-quality": [
+            "@csrun",
+            "@psalm",
+            "@phpstan"
+        ],
+        "test-unit": "./vendor/bin/phpunit --testsuite=unit",
+        "test-integration": "./vendor/bin/phpunit --testsuite=integration",
+        "test-coverage": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --testsuite=unit,integration --coverage-html=coverage",
+        "psalm": "./vendor/bin/psalm",
+        "phpstan": "./vendor/bin/phpstan analyze -c phpstan.neon src",
+        "csfix": "./vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "csrun": "./vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run"
+    }
+}

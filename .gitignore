@@ -1,0 +1,6 @@
+/coverage/
+/.idea/
+/.vscode/
+/vendor/
+.phpunit.*
+.php-cs-fixer.cache
