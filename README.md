@@ -11,8 +11,8 @@ composer require gacela-project/gacela-env-config-reader
 You must define in the `Gacela::bootstrap()` the configuration for the `env` files.
 
 - The first parameter refers to the `$rootAppDir`
-- The second parameter refers to the `$globalServices`, you can define the settings in an external `gacela.php` file (
-  recommended way) or inline
+- The second parameter refers to the `$globalServices`, you can define the settings in an external `gacela.php` file
+  (recommended way) or inline
 - The third parameter refers to the `$configReaders`, the key should match with the `$globalServices['config']['type']`,
   additionally, the parameter is an array because you can define more than one reader
 
@@ -68,19 +68,21 @@ Gacela::bootstrap(
 $globalServices = [
     'config' => [
         [
-            'type' => 'env',
-            'path' => 'config/.env*',
-        ],
-        [
             'type' => 'php',
             'path' => 'config/*.php',
+            'path_local' => 'config/local.php',
+        ],
+        [
+            'type' => 'env',
+            'path' => 'config/.env*',
+            'path_local' => 'config/.env.local.dist',
         ],
     ],
 ];
 
 $configReaders = [
-    'php' => new PhpConfigReader(),
-    'env' => new EnvConfigReader(),
+    'php' => new \Gacela\Framework\Config\ConfigReader\PhpConfigReader(),
+    'env' => new \Gacela\Framework\Config\ConfigReader\EnvConfigReader(),
 ];
 
 Gacela::bootstrap(__DIR__, $globalServices, $configReaders);
