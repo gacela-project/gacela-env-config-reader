@@ -21,7 +21,9 @@ You must define in the `Gacela::bootstrap()` the configuration for the `env` fil
 Define the `ConfigReader` in your bootstrap
 
 ```php
-Gacela::bootstrap(__DIR__, [], ['env' => new \Gacela\Framework\Config\ConfigReader\EnvConfigReader()]);
+use Gacela\Framework\Config\ConfigReader\EnvConfigReader;
+
+Gacela::bootstrap(__DIR__, [], ['env' => new EnvConfigReader()]);
 ```
 
 And set the configuration in a `gacela.php` file in the root of your project:
@@ -47,6 +49,8 @@ return static fn () => new class() extends AbstractConfigGacela {
 Define all configuration on the fly in the bootstrap itself.
 
 ```php
+use Gacela\Framework\Config\ConfigReader\EnvConfigReader;
+
 Gacela::bootstrap(
     __DIR__,
     [
@@ -58,13 +62,16 @@ Gacela::bootstrap(
             ],
         ],
     ],
-    ['env' => new \Gacela\Framework\Config\ConfigReader\EnvConfigReader()]
+    ['env' => new EnvConfigReader]
 );
 ```
 
 ### You can define more than one `ConfigReader` at once.
 
 ```php
+use Gacela\Framework\Config\ConfigReader\PhpConfigReader;
+use Gacela\Framework\Config\ConfigReader\EnvConfigReader;
+
 $globalServices = [
     'config' => [
         [
@@ -81,8 +88,8 @@ $globalServices = [
 ];
 
 $configReaders = [
-    'php' => new \Gacela\Framework\Config\ConfigReader\PhpConfigReader(),
-    'env' => new \Gacela\Framework\Config\ConfigReader\EnvConfigReader(),
+    'php' => new PhpConfigReader(),
+    'env' => new EnvConfigReader(),
 ];
 
 Gacela::bootstrap(__DIR__, $globalServices, $configReaders);
