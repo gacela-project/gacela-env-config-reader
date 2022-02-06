@@ -36,6 +36,11 @@
             "GacelaTest\\": "tests"
         }
     },
+    "config": {
+        "platform": {
+            "php": "7.4"
+        }
+    },
     "scripts": {
         "test-all": [
             "@test-quality",
