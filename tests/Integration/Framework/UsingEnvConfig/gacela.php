@@ -3,14 +3,12 @@
 declare(strict_types=1);
 
 use Gacela\Framework\AbstractConfigGacela;
+use Gacela\Framework\Config\ConfigReader\EnvConfigReader;
+use Gacela\Framework\Config\GacelaConfigBuilder\ConfigBuilder;
 
 return static fn () => new class () extends AbstractConfigGacela {
-    public function config(): array
+    public function config(ConfigBuilder $configBuilder): void
     {
-        return [
-            'type' => 'env',
-            'path' => 'config/.env*',
-            'path_local' => 'config/.env.local.dist',
-        ];
+        $configBuilder->add(EnvConfigReader::class, 'config/.env*', 'config/.env.local.dist');
     }
 };

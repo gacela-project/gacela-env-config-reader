@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace GacelaTest\Integration\Framework\UsingEnvConfig;
 
-use Gacela\Framework\Config\ConfigReader\EnvConfigReader;
 use Gacela\Framework\Gacela;
 use PHPUnit\Framework\TestCase;
 
@@ -12,9 +11,7 @@ final class IntegrationTest extends TestCase
 {
     public function setUp(): void
     {
-        Gacela::bootstrap(__DIR__, [], [
-            'env' => new EnvConfigReader(),
-        ]);
+        Gacela::bootstrap(__DIR__);
     }
 
     public function test_read_config_values_env(): void
