@@ -9,17 +9,12 @@ use Symfony\Component\Dotenv\Dotenv;
 
 final class EnvConfigReader implements ConfigReaderInterface
 {
-    public function canRead(string $absolutePath): bool
-    {
-        return false !== strpos($absolutePath, '.env');
-    }
-
     /**
      * @return array<string,mixed>
      */
     public function read(string $absolutePath): array
     {
-        if (!file_exists($absolutePath)) {
+        if (!$this->canRead($absolutePath)) {
             return [];
         }
 
@@ -28,5 +23,11 @@ final class EnvConfigReader implements ConfigReaderInterface
 
         /** @var array<string,mixed> $_ENV */
         return $_ENV;
+    }
+
+    private function canRead(string $absolutePath): bool
+    {
+        return false !== strpos($absolutePath, '.env')
+            && file_exists($absolutePath);
     }
 }
