@@ -21,7 +21,7 @@ return fn () => new class() extends AbstractConfigGacela
 {
     public function config(ConfigBuilder $configBuilder): void
     {
-        $configBuilder->add(EnvConfigReader::class, 'config/.env', 'config/.env.local');
+        $configBuilder->add('config/.env', 'config/.env.local'), EnvConfigReader::class;
     }
 }
 ```
@@ -35,7 +35,7 @@ Define all configuration on the fly in the bootstrap itself.
 
 Gacela::bootstrap($appRootDir, [
     'config' => function (ConfigBuilder $configBuilder): void {
-        $configBuilder->add(EnvConfigReader::class, 'config/.env*', 'config/.env.local');
+        $configBuilder->add('config/.env*', 'config/.env.local', EnvConfigReader::class);
     }
 ]);
 ```
@@ -45,8 +45,8 @@ Gacela::bootstrap($appRootDir, [
 ```php
 Gacela::bootstrap($appRootDir, [
     'config' => function (ConfigBuilder $configBuilder): void {
-        $configBuilder->add(PhpConfigReader::class, 'config/*.php', 'config/local.php');
-        $configBuilder->add(EnvConfigReader::class, 'config/.env*', 'config/.env.local.dist');
+        $configBuilder->add('config/*.php', 'config/local.php');
+        $configBuilder->add('config/.env*', 'config/.env.local.dist', EnvConfigReader::class);
     }
 ]);
 ```

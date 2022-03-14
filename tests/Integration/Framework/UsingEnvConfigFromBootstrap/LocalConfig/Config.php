@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GacelaTest\Integration\Framework\UsingMultipleConfigTypes\LocalConfig;
+namespace GacelaTest\Integration\Framework\UsingEnvConfigFromBootstrap\LocalConfig;
 
 use Gacela\Framework\AbstractConfig;
 
@@ -13,7 +13,6 @@ final class Config extends AbstractConfig
         return [
             'env_config' => $this->get('CONFIG_ENV'),
             'env_local_config' => $this->get('CONFIG_ENV_LOCAL'),
-            'php_config' => $this->get('CONFIG_PHP'),
             'override' => $this->get('OVERRIDE'),
         ];
     }
