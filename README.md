@@ -17,6 +17,8 @@ Define the configuration in a `gacela.php` file in the root of your project (rec
 ```php
 <?php # gacela.php
 
+use Gacela\Framework\Config\ConfigReader\EnvConfigReader;
+
 return fn () => new class() extends AbstractConfigGacela 
 {
     public function config(ConfigBuilder $configBuilder): void
@@ -33,6 +35,8 @@ Define all configuration on the fly in the bootstrap itself.
 ```php
 <?php  # public/index.php
 
+use Gacela\Framework\Config\ConfigReader\EnvConfigReader;
+
 Gacela::bootstrap($appRootDir, [
     'config' => function (ConfigBuilder $configBuilder): void {
         $configBuilder->add('config/.env*', 'config/.env.local', EnvConfigReader::class);
@@ -40,13 +44,12 @@ Gacela::bootstrap($appRootDir, [
 ]);
 ```
 
-### You can define more than one `ConfigReader` at once.
+#### You can define more than one `ConfigReader` at once.
 
 ```php
-Gacela::bootstrap($appRootDir, [
-    'config' => function (ConfigBuilder $configBuilder): void {
-        $configBuilder->add('config/*.php', 'config/local.php');
-        $configBuilder->add('config/.env*', 'config/.env.local.dist', EnvConfigReader::class);
-    }
-]);
+function (ConfigBuilder $configBuilder): void {
+    $configBuilder->add('config/.env*', 'config/.env.local.dist', EnvConfigReader::class);
+    $configBuilder->add('config/*.php', 'config/local.php');
+    $configBuilder->add('config/*.custom', '', CustomConfigReader::class);
+}
 ```
