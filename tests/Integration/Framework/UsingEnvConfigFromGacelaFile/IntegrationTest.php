@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GacelaTest\Integration\Framework\UsingEnvConfig;
+namespace GacelaTest\Integration\Framework\UsingEnvConfigFromGacelaFile;
 
 use Gacela\Framework\Gacela;
 use PHPUnit\Framework\TestCase;
@@ -14,7 +14,7 @@ final class IntegrationTest extends TestCase
         Gacela::bootstrap(__DIR__);
     }
 
-    public function test_read_config_values_env(): void
+    public function test_read_config_values_env_from_gacela_file(): void
     {
         $facade = new LocalConfig\Facade();
 

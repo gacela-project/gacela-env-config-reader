@@ -9,6 +9,6 @@ use Gacela\Framework\Config\GacelaConfigBuilder\ConfigBuilder;
 return static fn () => new class () extends AbstractConfigGacela {
     public function config(ConfigBuilder $configBuilder): void
     {
-        $configBuilder->add(EnvConfigReader::class, 'config/.env*', 'config/.env.local.dist');
+        $configBuilder->add('config/.env*', 'config/.env.local.dist', EnvConfigReader::class);
     }
 };
