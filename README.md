@@ -21,7 +21,7 @@ return fn () => new class() extends AbstractConfigGacela
 {
     public function config(ConfigBuilder $configBuilder): void
     {
-        $configBuilder->add('config/.env', 'config/.env.local'), EnvConfigReader::class;
+        $configBuilder->add('config/.env', 'config/.env.local', EnvConfigReader::class);
     }
 }
 ```
