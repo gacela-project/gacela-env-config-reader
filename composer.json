@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=7.4",
-        "gacela-project/gacela": "^0.15",
+        "gacela-project/gacela": "*",
         "symfony/dotenv": "^v5.4"
     },
     "require-dev": {

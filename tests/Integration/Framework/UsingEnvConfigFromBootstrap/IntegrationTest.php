@@ -14,13 +14,12 @@ final class IntegrationTest extends TestCase
 {
     public function setUp(): void
     {
-        Gacela::bootstrap(
-            __DIR__,
-            (new SetupGacela())
-                ->setConfig(static function (ConfigBuilder $configBuilder): void {
-                    $configBuilder->add('config/.env*', 'config/.env.local.dist', EnvConfigReader::class);
-                })
-        );
+        $setup = (new SetupGacela())
+            ->setConfig(static function (ConfigBuilder $configBuilder): void {
+                $configBuilder->add('config/.env*', 'config/.env.local.dist', EnvConfigReader::class);
+            });
+
+        Gacela::bootstrap(__DIR__, $setup);
     }
 
     public function test_read_config_values_env_from_bootstrap(): void
