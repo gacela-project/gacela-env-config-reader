@@ -19,7 +19,7 @@ Define the configuration in a `gacela.php` file in the root of your project (rec
 
 use Gacela\Framework\Config\ConfigReader\EnvConfigReader;
 
-return static fn() => (new SetupGacela())
+return (new SetupGacela())
     ->setConfig(static function(ConfigBuilder $configBuilder): void {
         $configBuilder->add('config/.env*', 'config/.env.local.dist', EnvConfigReader::class);
     });
