@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GacelaTest\Integration\Framework\UsingEnvConfigFromGacelaFile;
+namespace GacelaTest\Feature\Framework\UsingEnvConfigFromGacelaFile;
 
 use Gacela\Framework\Gacela;
 use PHPUnit\Framework\TestCase;

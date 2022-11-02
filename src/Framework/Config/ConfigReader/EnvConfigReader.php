@@ -5,10 +5,14 @@ declare(strict_types=1);
 namespace Gacela\Framework\Config\ConfigReader;
 
 use Gacela\Framework\Config\ConfigReaderInterface;
+use Gacela\Framework\Event\ConfigReader\ReadEnvConfigEvent;
+use Gacela\Framework\Event\Dispatcher\EventDispatchingCapabilities;
 use Symfony\Component\Dotenv\Dotenv;
 
 final class EnvConfigReader implements ConfigReaderInterface
 {
+    use EventDispatchingCapabilities;
+
     /**
      * @return array<string,mixed>
      */
@@ -17,6 +21,8 @@ final class EnvConfigReader implements ConfigReaderInterface
         if (!$this->canRead($absolutePath)) {
             return [];
         }
+
+        $this->dispatchEvent(new ReadEnvConfigEvent($absolutePath));
 
         $env = new Dotenv();
         $env->load($absolutePath);

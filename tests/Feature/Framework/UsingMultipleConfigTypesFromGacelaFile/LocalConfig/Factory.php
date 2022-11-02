@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GacelaTest\Integration\Framework\UsingEnvConfigFromBootstrap\LocalConfig;
+namespace GacelaTest\Feature\Framework\UsingMultipleConfigTypesFromGacelaFile\LocalConfig;
 
 use Gacela\Framework\AbstractFactory;
 
