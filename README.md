@@ -36,17 +36,17 @@ use Gacela\Framework\Bootstrap\GacelaConfig;
 use Gacela\Framework\Config\ConfigReader\EnvConfigReader;
 use Gacela\Framework\Gacela;
 
-$setup = static function (GacelaConfig $config): void {
+$config = static function (GacelaConfig $config): void {
     $config->addAppConfig('config/.env*', 'config/.env.local.dist', EnvConfigReader::class);
 };
 
-Gacela::bootstrap($appRootDir, $setup);
+Gacela::bootstrap($appRootDir, $config);
 ```
 
 #### You can define more than one `ConfigReader` at once.
 
 ```php
-$setup = static function (GacelaConfig $config): void {
+$config = static function (GacelaConfig $config): void {
     $config->addAppConfig('config/.env*', 'config/.env.local.dist', EnvConfigReader::class);
     $config->addAppConfig('config/*.php', 'config/local.php');
     $config->addAppConfig('config/*.custom', '', CustomConfigReader::class);
