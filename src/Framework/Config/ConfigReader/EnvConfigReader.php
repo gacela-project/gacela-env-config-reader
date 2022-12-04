@@ -22,7 +22,7 @@ final class EnvConfigReader implements ConfigReaderInterface
             return [];
         }
 
-        $this->dispatchEvent(new ReadEnvConfigEvent($absolutePath));
+        self::dispatchEvent(new ReadEnvConfigEvent($absolutePath));
 
         $env = new Dotenv();
         $env->load($absolutePath);
