@@ -1,7 +1,7 @@
-/coverage/
-/.idea/
-/.vscode/
-/vendor/
-.phpunit.*
-.php-cs-fixer.cache
+coverage/
+.idea/
+.vscode/
+vendor/
+
+*.cache
 composer.lock

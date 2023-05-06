@@ -22,7 +22,7 @@ final class IntegrationTest extends TestCase
             [
                 'env_config' => 'ENV_CONFIG',
                 'env_local_config' => 'ENV_LOCAL_CONFIG',
-                'php_config' => 'PHP_CONFIG',
+                'php_config' => 'default-php_config',
                 'override' => 'ENV_LOCAL_OVERRIDE',
             ],
             $facade->doSomething()

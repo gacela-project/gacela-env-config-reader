@@ -11,9 +11,9 @@ final class Config extends AbstractConfig
     public function getArrayConfig(): array
     {
         return [
-            'env_config' => $this->get('CONFIG_ENV'),
-            'env_local_config' => $this->get('CONFIG_ENV_LOCAL'),
-            'override' => $this->get('OVERRIDE'),
+            'env_config' => $this->get('CONFIG_ENV', 'default-env_config'),
+            'env_local_config' => $this->get('CONFIG_ENV_LOCAL', 'default-env_local_config'),
+            'override' => $this->get('OVERRIDE', 'default-override'),
         ];
     }
 }

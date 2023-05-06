@@ -33,7 +33,7 @@ final class EnvConfigReader implements ConfigReaderInterface
 
     private function canRead(string $absolutePath): bool
     {
-        return false !== strpos($absolutePath, '.env')
+        return str_contains($absolutePath, '.env')
             && file_exists($absolutePath);
     }
 }

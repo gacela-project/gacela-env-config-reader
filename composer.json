@@ -2,7 +2,7 @@
     "name": "gacela-project/gacela-env-config-reader",
     "description": "Load .env files into Gacela",
     "type": "library",
-    "keywords": ["php","modular","kernel"],
+    "keywords": ["php", "modular", "kernel"],
     "license": "MIT",
     "authors": [
         {
@@ -15,17 +15,17 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "gacela-project/gacela": "*",
+        "php": ">=8.0",
+        "gacela-project/gacela": "^1.0",
         "symfony/dotenv": "^v5.4"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.13",
-        "phpunit/phpunit": "^9.5",
-        "phpstan/phpstan": "^1.9",
+        "friendsofphp/php-cs-fixer": "^3.16",
+        "phpunit/phpunit": "^9.6",
+        "phpstan/phpstan": "^1.10",
         "psalm/plugin-phpunit": "^0.18",
         "symfony/var-dumper": "^5.4",
-        "vimeo/psalm": "^5.1"
+        "vimeo/psalm": "^5.11"
     },
     "autoload": {
         "psr-4": {
@@ -39,10 +39,10 @@
     },
     "config": {
         "platform": {
-            "php": "7.4"
+            "php": "8.0"
         },
         "allow-plugins": {
-            "composer/package-versions-deprecated": true
+            "composer/package-versions-deprecated": false
         }
     },
     "scripts": {
@@ -61,14 +61,12 @@
             "@phpstan"
         ],
         "phpunit": [
-            "@test-unit",
             "@test-feature"
         ],
         "static-clear-cache": [
             "vendor/bin/psalm --clear-cache",
             "vendor/bin/phpstan clear-result-cache"
         ],
-        "test-unit": "./vendor/bin/phpunit --testsuite=unit",
         "test-feature": "./vendor/bin/phpunit --testsuite=feature",
         "test-coverage": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --testsuite=unit,feature --coverage-html=coverage",
         "psalm": "./vendor/bin/psalm",
