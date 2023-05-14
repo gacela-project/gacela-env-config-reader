@@ -14,6 +14,7 @@ final class IntegrationTest extends TestCase
     public function setUp(): void
     {
         Gacela::bootstrap(__DIR__, static function (GacelaConfig $config): void {
+            $config->resetInMemoryCache();
             $config->addAppConfig('config/.env*', 'config/.env.local.dist', EnvConfigReader::class);
         });
     }

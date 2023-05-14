@@ -1,7 +1,11 @@
-coverage/
 .idea/
 .vscode/
+.cache/
+
+coverage/
+data/
 vendor/
 
 *.cache
 composer.lock
+mutation-report.html
