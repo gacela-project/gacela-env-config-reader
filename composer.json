@@ -7,7 +7,8 @@
     "authors": [
         {
             "name": "Jose Maria Valera Reales",
-            "email": "chemaclass@outlook.es"
+            "email": "chemaclass@outlook.es",
+            "homepage": "https://chemaclass.com"
         },
         {
             "name": "Jesus Valera Reales",
@@ -16,7 +17,7 @@
     ],
     "require": {
         "php": ">=8.0",
-        "gacela-project/gacela": "^1.0",
+        "gacela-project/gacela": "@stable",
         "symfony/dotenv": "^v5.4"
     },
     "require-dev": {
