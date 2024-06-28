@@ -55,6 +55,7 @@
             "@test-all",
             "@infection"
         ],
+        "test": "@test-all",
         "test-all": [
             "@quality",
             "@phpunit"
