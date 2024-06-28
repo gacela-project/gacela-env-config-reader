@@ -22,7 +22,6 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.16",
-        "infection/infection": "^0.26",
         "phpunit/phpunit": "^9.6",
         "phpstan/phpstan": "^1.10",
         "psalm/plugin-phpunit": "^0.18",
@@ -52,8 +51,7 @@
         "ctal": [
             "@static-clear-cache",
             "@csfix",
-            "@test-all",
-            "@infection"
+            "@test-all"
         ],
         "test": "@test-all",
         "test-all": [
@@ -79,7 +77,6 @@
         "psalm": "XDEBUG_MODE=off ./vendor/bin/psalm",
         "phpstan": "XDEBUG_MODE=off ./vendor/bin/phpstan analyze -c phpstan.neon src",
         "csfix": "XDEBUG_MODE=off ./vendor/bin/php-cs-fixer fix --allow-risky=yes",
-        "csrun": "XDEBUG_MODE=off ./vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run",
-        "infection": "XDEBUG_MODE=coverage ./vendor/bin/infection --show-mutations --threads=max --min-msi=100 --min-covered-msi=100"
+        "csrun": "XDEBUG_MODE=off ./vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run"
     }
 }
