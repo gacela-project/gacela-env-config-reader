@@ -18,4 +18,15 @@
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
     </plugins>
+
+    <issueHandlers>
+        <!--
+            Suppressed for the same reason Gacela itself suppresses it: psalm
+            counts an interface implementation as an override, and both classes
+            here implement one. PHP already enforces that: a class failing to
+            implement an interface method does not compile, so the attribute
+            would be noise on every method in the package.
+        -->
+        <MissingOverrideAttribute errorLevel="suppress" />
+    </issueHandlers>
 </psalm>

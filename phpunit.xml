@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="vendor/autoload.php"
+         cacheDirectory=".phpunit.cache"
          backupGlobals="false"
-         backupStaticAttributes="false"
+         backupStaticProperties="false"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
          executionOrder="random"
          processIsolation="false"
          resolveDependencies="true"
          stopOnFailure="false"
-         verbose="true"
+         failOnWarning="true"
+         failOnNotice="true"
+         failOnDeprecation="true"
+         displayDetailsOnPhpunitDeprecations="true"
          testdox="true"
 >
     <php>
@@ -27,9 +28,9 @@
         </testsuite>
     </testsuites>
 
-    <coverage>
+    <source>
         <include>
             <directory suffix=".php">src</directory>
         </include>
-    </coverage>
+    </source>
 </phpunit>
