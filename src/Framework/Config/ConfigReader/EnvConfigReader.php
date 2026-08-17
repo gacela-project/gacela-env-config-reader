@@ -9,6 +9,8 @@ use Gacela\Framework\Event\ConfigReader\ReadEnvConfigEvent;
 use Gacela\Framework\Event\Dispatcher\EventDispatchingCapabilities;
 use Symfony\Component\Dotenv\Dotenv;
 
+use function str_contains;
+
 final class EnvConfigReader implements ConfigReaderInterface
 {
     use EventDispatchingCapabilities;
@@ -22,7 +24,9 @@ final class EnvConfigReader implements ConfigReaderInterface
             return [];
         }
 
-        self::dispatchEvent(new ReadEnvConfigEvent($absolutePath));
+        if (self::shouldDispatch(ReadEnvConfigEvent::class)) {
+            self::dispatchEvent(new ReadEnvConfigEvent($absolutePath));
+        }
 
         $env = new Dotenv();
         $env->load($absolutePath);
